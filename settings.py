@@ -12,12 +12,4 @@ class Settings:
         self.bullet_color = (60, 60, 60)
         self.bullets_allowed = 1000
 
-        self.PT1 = platform()
-        self.P1 = Player()
 
-        self.all_sprites = pygame.sprite.Group()
-        self.all_sprites.add(PT1)
-        self.all_sprites.add(P1)
-
-        self.platforms = pygame.sprite.Group()
-        self.platforms.add(PT1)
