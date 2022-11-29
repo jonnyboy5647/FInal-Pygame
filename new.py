@@ -10,13 +10,17 @@ clock.tick(60)
 
 class Settings:
     def __init__(self):
+        vec = pygame.math.Vector2
+
         self.screen_width = 400
         self.screen_height = 450
-        self.bg_color = (0, 0, 255)
+        self.bg_color = (0, 0, 0)
 
         self.player_acc = 0.5
         self.player_fric = -0.12
         self.player_limit = 3
+        self.player_pos = vec(10, 385)
+        self.player_vel = vec(0, 0)
 
         self.bullet_speed = 10
         self.bullet_width = 3
@@ -45,6 +49,25 @@ class Player:
 
         self.moving_right = False
         self.moving_left = False
+
+    def move(self):
+        self.settings.player_acc = self.settings.vec(0, 0.5)
+
+        pressed_keys = pygame.key.get_pressed()
+
+        if pressed_keys[K_LEFT]:
+            self.settings.player_acc.x = -self.settings.player_acc
+        if pressed_keys[K_RIGHT]:
+            self.settings.player_acc.x = self.settings.player_acc
+
+        self.settings.player_acc.x += self.settings.vel.x * self.settings.fric
+        self.settings.vel += self.settings.player_acc
+        self.settings.pos += self.settings.vel + 0.5 * self.settings.player_acc
+
+        if self.pos.x > self.settings.screen_width:
+            self.pos.x = 0
+        if self.pos < 0:
+            self.pos.x = self.settings.screen_width
 
     def update(self):
         if self.moving_right and self.rect.right < self.screen_rect.right:
@@ -105,21 +128,22 @@ class Background(Sprite):
         self.settings = jj_game.Settings
         self.screen = jj_game.screen
 
-
-        #self.image = pygame.surface.Surface((self.settings.screen_width, self.settings.screen_height))
-
         self.tile_size = 18
 
         self.ground = pygame.image.load("../images/tile_0000.png")
         self.ground_rect = self.ground.get_rect()
         self.num_tiles = self.settings.screen_width // self.ground_rect.width
 
+        for y in range(656, 720, 18):
+            for x in range(0, 1200, 18):
+                self.screen.blit(self.ground, (x, y))
+
         self.rect = self.image.get_rect()
 
     def draw(self):
         for y in range(self.num_tiles):
             for x in range(self.num_tiles):
-                self.screen.blit(self.ground, (x * self.ground_rect.width, y * self.ground_rect.height))
+                self.screen.blit(self.ground, self.rect)
 
 
 class GameStats:
@@ -161,7 +185,6 @@ class JetpackJoyride:
 
             if self.stats.game_active:
                 self.player.update()
-                self.background.update()
                 self._update_bullets()
                 self._update_rocks()
                 self._create_rock()
@@ -169,12 +192,7 @@ class JetpackJoyride:
             self._update_screen()
 
     def _jump_player(self):
-        vec = pygame.math.Vector2
-
-        self.pos = vec((10, 385))
-        self.vel = vec(0, 0)
-
-        self.vel.y = -10
+        self.player.y = -10
 
     def _player_hit(self):
         if self.stats.players_left > 0:
@@ -185,6 +203,10 @@ class JetpackJoyride:
 
         else:
             self.stats.game_active = False
+
+    def _check_player_bottom_collisions(self):
+        hits = pygame.sprite.spritecollide(
+            self.player, self.background, False)
 
     def _fire_bullet(self):
         if len(self.bullets) < self.settings.bullets_allowed:
