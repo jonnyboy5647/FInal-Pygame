@@ -40,7 +40,7 @@ class Player:
         self.settings = jj_game.settings
         self.screen_rect = jj_game.screen.get_rect()
 
-        self.image = pygame.image.load('../images/character_robot_run1.png')
+        self.image = pygame.image.load('images/character_robot_run1.png')
         self.rect = self.image.get_rect()
 
         self.rect.center = self.screen_rect.center
@@ -108,7 +108,7 @@ class Rock(Sprite):
         self.screen = jj_game.screen
         self.settings = jj_game.settings
 
-        self.image = pygame.image.load("../images/spaceMeteors_001.png")
+        self.image = pygame.image.load("images/spaceMeteors_001.png")
         self.rect = self.image.get_rect()
 
         self.rect.left = self.screen.get_rect().right
@@ -130,7 +130,7 @@ class Background(Sprite):
 
         self.tile_size = 18
 
-        self.ground = pygame.image.load("../images/tile_0000.png")
+        self.ground = pygame.image.load("images/tile_0000.png")
         self.ground_rect = self.ground.get_rect()
         self.num_tiles = self.settings.screen_width // self.ground_rect.width
 
