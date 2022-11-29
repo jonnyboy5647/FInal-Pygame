@@ -1,16 +1,157 @@
 import sys
 import pygame
-from settings import Settings
-from background import Background
-from gamestats import GameStats
-from bullet import Bullet
-from rock import Rock
-from player import Player
-from platform import Platform
+from pygame.sprite import Sprite
 from random import random
+from random import randint
 
 clock = pygame.time.Clock()
 clock.tick(60)
+
+
+class Settings:
+    def __init__(self):
+        vec = pygame.math.Vector2
+
+        self.screen_width = 400
+        self.screen_height = 450
+        self.bg_color = (0, 0, 0)
+
+        self.player_acc = 0.5
+        self.player_fric = -0.12
+        self.player_limit = 3
+        self.player_pos = vec(10, 385)
+        self.player_vel = vec(0, 0)
+
+        self.bullet_speed = 10
+        self.bullet_width = 3
+        self.bullet_height = 15
+        self.bullet_color = (255, 255, 255)
+        self.bullets_allowed = 3
+
+        self.rock_speed = 1.0
+        self.rock_frequency = 0.002
+
+        self.fps = 60
+
+
+class Player:
+    def __init__(self, jj_game):
+        self.screen = jj_game.screen
+        self.settings = jj_game.settings
+        self.screen_rect = jj_game.screen.get_rect()
+
+        self.image = pygame.image.load('images/character_robot_run1.png')
+        self.rect = self.image.get_rect()
+
+        self.rect.center = self.screen_rect.center
+
+        self.x = float(self.rect.x)
+
+        self.moving_right = False
+        self.moving_left = False
+
+    def move(self):
+        self.settings.player_acc = self.settings.vec(0, 0.5)
+
+        pressed_keys = pygame.key.get_pressed()
+
+        if pressed_keys[K_LEFT]:
+            self.settings.player_acc.x = -self.settings.player_acc
+        if pressed_keys[K_RIGHT]:
+            self.settings.player_acc.x = self.settings.player_acc
+
+        self.settings.player_acc.x += self.settings.vel.x * self.settings.fric
+        self.settings.vel += self.settings.player_acc
+        self.settings.pos += self.settings.vel + 0.5 * self.settings.player_acc
+
+        if self.pos.x > self.settings.screen_width:
+            self.pos.x = 0
+        if self.pos < 0:
+            self.pos.x = self.settings.screen_width
+
+    def update(self):
+        if self.moving_right and self.rect.right < self.screen_rect.right:
+            self.x += self.settings.player_acc
+        if self.moving_left and self.rect.left > 0:
+            self.x -= self.settings.player_acc
+
+        self.rect.x = self.x
+
+    def blitme(self):
+        self.screen.blit(self.image, self.rect)
+
+
+class Bullet(Sprite):
+    def __init__(self, jj_game):
+        super().__init__()
+        self.screen = jj_game.screen
+        self.settings = jj_game.settings
+        self.color = self.settings.bullet_color
+
+        self.rect = pygame.Rect(0, 0, self.settings.bullet_width,
+                                self.settings.bullet_height)
+        self.rect.midbottom = jj_game.player.rect.midbottom
+
+        self.y = float(self.rect.y)
+
+    def update(self):
+        self.y += self.settings.bullet_speed
+        self.rect.y = self.y
+
+    def draw_bullet(self):
+        pygame.draw.rect(self.screen, self.color, self.rect)
+
+
+class Rock(Sprite):
+    def __init__(self, jj_game):
+        super().__init__()
+        self.screen = jj_game.screen
+        self.settings = jj_game.settings
+
+        self.image = pygame.image.load("images/spaceMeteors_001.png")
+        self.rect = self.image.get_rect()
+
+        self.rect.left = self.screen.get_rect().right
+        rock_top_max = self.settings.screen_height - self.rect.height
+        self.rect.top = randint(0, rock_top_max)
+
+        self.x = float(self.rect.x)
+
+    def update(self):
+        self.x -= self.settings.rock_speed
+        self.rect.x = self.x
+
+
+class Background(Sprite):
+    def __init__(self, jj_game):
+        super().__init__()
+        self.settings = jj_game.Settings
+        self.screen = jj_game.screen
+
+        self.tile_size = 1024
+
+        self.image = pygame.image.load("images/backgroundCastles.png")
+        self.image_rect = self.image.get_rect()
+        self.screen_rect = self.screen.get_rect
+        self.background = pygame.surface.Surface((self.screen_rect.width,
+                                                  self.screen_rect.height))
+
+        # self.num_tiles = self.settings.screen_width // self.ground_rect.width
+
+        # for y in range(656, 720, 18):
+        # for x in range(0, 1200, 18):
+        # self.screen.blit(self.ground, (x, y))
+
+
+class GameStats:
+    def __init__(self, jj_game):
+        self.settings = jj_game.settings
+        self.reset_stats()
+
+        self.game_active = True
+
+    def reset_stats(self):
+        self.players_left = self.settings.player_limit
 
 
 class JetpackJoyride:
@@ -18,10 +159,7 @@ class JetpackJoyride:
         pygame.init()
         self.settings = Settings()
 
-        tile_size = 1024
-        window_size = tile_size
-
-        self.screen = pygame.display.set_mode((window_size, window_size))
+        self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
         self.settings.screen_width = self.screen.get_rect().width
         self.settings.screen_height = self.screen.get_rect().height
 
@@ -30,10 +168,9 @@ class JetpackJoyride:
         self.stats = GameStats(self)
         self.player = Player(self)
 
-        self.platform = Platform(self)
+        self.background = pygame.sprite.Group()
 
-        self.background = Background(self)
-
+        self.platforms = pygame.sprite.Group()
         self.bullets = pygame.sprite.Group()
         self.rocks = pygame.sprite.Group()
 
@@ -51,6 +188,9 @@ class JetpackJoyride:
 
             self._update_screen()
 
+    def _jump_player(self):
+        self.player.y = -10
+
     def _player_hit(self):
         if self.stats.players_left > 0:
             self.stats.players_left -= 1
@@ -60,10 +200,10 @@ class JetpackJoyride:
 
         else:
             self.stats.game_active = False
-            self.over_font = pygame.font.Font('freesansbold.ttf', 64)
-            game_over_text = self.over_font.render("GAME OVER", True, (200, 200, 100))
-            self.screen.fill((0, 0, 0))
-            self.screen.blit(game_over_text, (500, 500))
+
+    def _check_player_bottom_collisions(self):
+        hits = pygame.sprite.spritecollide(
+            self.player, self.background, False)
 
     def _fire_bullet(self):
         if len(self.bullets) < self.settings.bullets_allowed:
@@ -113,7 +253,19 @@ class JetpackJoyride:
         elif event.key == pygame.K_RIGHT:
             self.player.moving_right = True
         elif event.key == pygame.K_SPACE:
+            self._jump_player()
             self._fire_bullet()
+
+        # self.acc = vec(0, 0.5)
+
+        # if event.key == pygame.K_RIGHT:
+        # self.acc.x = -acc
+        # elif event.key == pygame.K_LEFT:
+        # self.acc.x = acc
+
+        # self.acc.x += self.vel.x * fric
+        # self.vel += self.acc
+        # self.pos += self.vel + 0.5 * self.acc
 
     def _check_keyup_events(self, event):
         if event.key == pygame.K_RIGHT:
@@ -123,15 +275,12 @@ class JetpackJoyride:
 
     def _update_screen(self):
         self.screen.fill(self.settings.bg_color)
-
-        self.background.blitme()
-        self.screen.blit(self.platform.image, (0,0))
         self.player.blitme()
-
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
 
         self.rocks.draw(self.screen)
+        self.background.draw(self.screen)
 
         pygame.display.flip()
 
