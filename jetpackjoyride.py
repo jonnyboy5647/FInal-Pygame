@@ -60,6 +60,10 @@ class JetpackJoyride:
 
         else:
             self.stats.game_active = False
+            self.over_font = pygame.font.Font('freesansbold.ttf', 64)
+            game_over_text = self.over_font.render("GAME OVER", True, (200, 200, 100))
+            self.screen.fill((0, 0, 0))
+            self.screen.blit(game_over_text, (500, 500))
 
     def _fire_bullet(self):
         if len(self.bullets) < self.settings.bullets_allowed:
@@ -118,7 +122,7 @@ class JetpackJoyride:
             self.player.moving_left = False
 
     def _update_screen(self):
-        #self.screen.fill(self.settings.bg_color)
+        self.screen.fill(self.settings.bg_color)
 
         self.background.blitme()
         self.screen.blit(self.platform.image, (0,0))
