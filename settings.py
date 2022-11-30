@@ -22,6 +22,6 @@ class Settings:
         self.bullets_allowed = 3
 
         self.rock_speed = 1.0
-        self.rock_frequency = 0.002
+        self.rock_frequency = 0.0009
 
         self.fps = 60

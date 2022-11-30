@@ -9,7 +9,7 @@ class Rock(Sprite):
         self.screen = jj_game.screen
         self.settings = jj_game.settings
 
-        self.image = pygame.image.load("images/spaceMeteors_001.png")
+        self.image = pygame.image.load("images/spaceMeteors_002.png")
         self.rect = self.image.get_rect()
 
         self.rect.left = self.screen.get_rect().right

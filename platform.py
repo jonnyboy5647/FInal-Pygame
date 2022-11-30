@@ -6,7 +6,7 @@ class Platform:
         super().__init__()
         self.screen = jj_game.screen
 
-        self.image = pygame.image.load("images/backgroundCastles.png")
+        self.image = pygame.image.load("images/tile_0000.png")
         self.image.blit(pygame.image.load("images/tile_0000.png"),
                         (0, 1006))
         self.image.blit(pygame.image.load("images/tile_0000.png"),
@@ -41,5 +41,5 @@ class Platform:
                         (270, 1006))
         self.rect = self.image.get_rect()
 
-    def blitme(self, surface):
-        surface.blit(self.image, self.rect)
+    def blitme(self):
+        self.screen.blit(self.image, self.rect)

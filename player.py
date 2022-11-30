@@ -7,7 +7,7 @@ class Player:
         self.settings = jj_game.settings
         self.screen_rect = jj_game.screen.get_rect()
 
-        self.image = pygame.image.load('images/character_robot_run1.png')
+        self.image = pygame.image.load('images/character_robot_attack1.png')
         self.rect = self.image.get_rect()
 
         self.rect.center = self.screen_rect.center
