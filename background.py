@@ -6,7 +6,7 @@ class Background:
         super().__init__()
         self.screen = jj_game.screen
 
-        self.image = pygame.image.load("images/backgroundCastles.png")
+        self.image = pygame.image.load("images/backgroundgrass.png")
 
         self.screen_rect = self.screen.get_rect
         self.rect = self.image.get_rect()

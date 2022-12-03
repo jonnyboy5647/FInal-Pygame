@@ -21,10 +21,7 @@ class JetpackJoyride:
         pygame.init()
         self.settings = Settings()
 
-        tile_size = 1024
-        window_size = tile_size
-
-        self.screen = pygame.display.set_mode((window_size, window_size))
+        self.screen = pygame.display.set_mode((1200, 600))
         self.settings.screen_width = self.screen.get_rect().width
         self.settings.screen_height = self.screen.get_rect().height
 
@@ -41,6 +38,8 @@ class JetpackJoyride:
         self.FramePerSec = pygame.time.Clock()
 
     def run_game(self):
+        self._background_music()
+
         while self.stats.game_active:
             self._check_events()
             self.player.update()
@@ -48,12 +47,11 @@ class JetpackJoyride:
             self._update_rocks()
             self._create_rock()
             self._update_screen()
-            self._background_music()
 
         Font = pygame.font.SysFont('Arial', 60)
         game_over_text = Font.render(f"GAME OVER", True, (200, 200, 200))
         self.screen.fill((0, 0, 0))
-        self.screen.blit(game_over_text, (350, 500))
+        self.screen.blit(game_over_text, (450, 300))
         pygame.display.flip()
 
         while True:
@@ -66,13 +64,6 @@ class JetpackJoyride:
     def _background_music(self):
         pygame.mixer.music.load("music/background3.wav")
         pygame.mixer.music.play(-1)
-
-    #def _player_score(self):
-    #    Font = pygame.font.SysFont('Arial', 30)
-    #    score = 0
-
-    #    score_text = Font.render(f"SCORE: {score // 60}", True, (0, 0, 0))
-    #    self.screen.blit(score_text, (15, 160))
 
     def _player_hit(self):
         if self.stats.players_left > 0:
@@ -103,7 +94,7 @@ class JetpackJoyride:
             print(len(self.rocks))
         Font = pygame.font.SysFont('Arial', 30)
         score_text = Font.render(f"SCORE: {len(self.rocks)}", True, (0, 0, 0))
-        self.screen.blit(score_text, (15, 160))
+        self.screen.blit(score_text, (15, 20))
 
     def _check_rocks_left_edge(self):
         for rock in self.rocks.sprites():
@@ -136,6 +127,7 @@ class JetpackJoyride:
             self.player.moving_right = True
         elif event.key == pygame.K_SPACE:
             self._fire_bullet()
+            self.player.jumping = True
 
     def _check_keyup_events(self, event):
         if event.key == pygame.K_RIGHT:
@@ -147,7 +139,7 @@ class JetpackJoyride:
         self.screen.fill(self.settings.bg_color)
 
         self.background.blitme()
-        self.platform.blitme()
+        #self.platform.blitme()
         self.player.blitme()
         self._create_rock()
         #self._player_score()

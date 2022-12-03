@@ -6,39 +6,39 @@ class Platform:
         super().__init__()
         self.screen = jj_game.screen
 
-        self.image = pygame.image.load("images/tile_0000.png")
+        self.image = pygame.image.load("images/backgroundgrass.png")
         self.image.blit(pygame.image.load("images/tile_0000.png"),
-                        (0, 1006))
+                        (0, 662))
         self.image.blit(pygame.image.load("images/tile_0000.png"),
-                        (18, 1006))
+                        (18, 662))
         self.image.blit(pygame.image.load("images/tile_0000.png"),
-                        (36, 1006))
+                        (36, 662))
         self.image.blit(pygame.image.load("images/tile_0000.png"),
-                        (54, 1006))
+                        (54, 662))
         self.image.blit(pygame.image.load("images/tile_0000.png"),
-                        (72, 1006))
+                        (72, 662))
         self.image.blit(pygame.image.load("images/tile_0000.png"),
-                        (90, 1006))
+                        (90, 662))
         self.image.blit(pygame.image.load("images/tile_0000.png"),
-                        (108, 1006))
+                        (108, 662))
         self.image.blit(pygame.image.load("images/tile_0000.png"),
-                        (126, 1006))
+                        (126, 662))
         self.image.blit(pygame.image.load("images/tile_0000.png"),
-                        (144, 1006))
+                        (144, 662))
         self.image.blit(pygame.image.load("images/tile_0000.png"),
-                        (162, 1006))
+                        (162, 662))
         self.image.blit(pygame.image.load("images/tile_0000.png"),
-                        (180, 1006))
+                        (180, 662))
         self.image.blit(pygame.image.load("images/tile_0000.png"),
-                        (198, 1006))
+                        (198, 662))
         self.image.blit(pygame.image.load("images/tile_0000.png"),
-                        (216, 1006))
+                        (216, 662))
         self.image.blit(pygame.image.load("images/tile_0000.png"),
-                        (234, 1006))
+                        (234, 662))
         self.image.blit(pygame.image.load("images/tile_0000.png"),
-                        (252, 1006))
+                        (252, 662))
         self.image.blit(pygame.image.load("images/tile_0000.png"),
-                        (270, 1006))
+                        (270, 662))
         self.rect = self.image.get_rect()
 
     def blitme(self):
