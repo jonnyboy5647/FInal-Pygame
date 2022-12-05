@@ -128,6 +128,8 @@ class JetpackJoyride:
         elif event.key == pygame.K_SPACE:
             self._fire_bullet()
             self.player.jumping = True
+            bullet_sound = mixer.Sound("laser.wav")
+            bullet_sound.play()
 
     def _check_keyup_events(self, event):
         if event.key == pygame.K_RIGHT:

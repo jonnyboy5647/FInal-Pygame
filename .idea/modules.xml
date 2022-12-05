@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../Alien-Invasion/.idea/Alien-Invasion.iml" filepath="$PROJECT_DIR$/../Alien-Invasion/.idea/Alien-Invasion.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/FInal-Pygame.iml" filepath="$PROJECT_DIR$/.idea/FInal-Pygame.iml" />
       <module fileurl="file://$PROJECT_DIR$/../mighty_midy/.idea/mighty_midy.iml" filepath="$PROJECT_DIR$/../mighty_midy/.idea/mighty_midy.iml" />
     </modules>
