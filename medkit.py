@@ -8,12 +8,12 @@ class Medkit(Sprite):
         self.screen = jj_game.screen
         self.settings = jj_game.settings
 
-        self.image = pygame.image.load("images/tile_0016.png")
+        self.image = pygame.image.load("images/genericItem_color_102.png")
         self.rect = self.image.get_rect()
 
         self.rect.left = self.screen.get_rect().right
-        medkit_top_max = 300
-        self.rect.top = randint(0, medkit_top_max)
+        medkit_top_max = 545
+        self.rect.top = randint(545, medkit_top_max)
 
         self.x = float(self.rect.x)
 

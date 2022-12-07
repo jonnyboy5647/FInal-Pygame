@@ -9,6 +9,8 @@ from settings import Settings
 from platform import Platform
 from rock import Rock
 from bullet import Bullet
+from medkit import Medkit
+from player2 import Player2
 
 from random import random
 
@@ -21,7 +23,7 @@ class JetpackJoyride:
         pygame.init()
         self.settings = Settings()
 
-        self.screen = pygame.display.set_mode((1200, 600))
+        self.screen = pygame.display.set_mode((570, 360))
         self.settings.screen_width = self.screen.get_rect().width
         self.settings.screen_height = self.screen.get_rect().height
 
@@ -29,11 +31,13 @@ class JetpackJoyride:
 
         self.stats = GameStats(self)
         self.player = Player(self)
+        self.player2 = Player2(self)
         self.background = Background(self)
         self.platform = Platform(self)
 
         self.bullets = pygame.sprite.Group()
         self.rocks = pygame.sprite.Group()
+        self.medkits = pygame.sprite.Group()
 
         self.FramePerSec = pygame.time.Clock()
 
@@ -42,10 +46,18 @@ class JetpackJoyride:
 
         while self.stats.game_active:
             self._check_events()
+
             self.player.update()
+            self.player2.update()
+
             self._update_bullets()
+
             self._update_rocks()
             self._create_rock()
+
+            self._update_medkits()
+            self._create_medkit()
+
             self._update_screen()
 
         Font = pygame.font.SysFont('Arial', 60)
@@ -75,17 +87,42 @@ class JetpackJoyride:
         else:
             self.stats.game_active = False
 
-    def _fire_bullet(self):
-        if len(self.bullets) < self.settings.bullets_allowed:
-            new_bullet = Bullet(self)
-            self.bullets.add(new_bullet)
+    def _player_hit_medkit(self):
+        self.stats.players_left += 1
 
     def _update_bullets(self):
         self.bullets.update()
 
         for bullet in self.bullets.copy():
-            if bullet.rect.top >= self.settings.screen_height:
+            if bullet.rect.left >= self.settings.screen_width:
                 self.bullets.remove(bullet)
+        self._check_bullet_rock_collisions()
+
+    def _fire_bullet(self):
+        if len(self.bullets) < self.settings.bullets_allowed:
+            new_bullet = Bullet(self)
+            self.bullets.add(new_bullet)
+
+    def _check_bullet_rock_collisions(self):
+        collisions = pygame.sprite.groupcollide(self.bullets, self.rocks, True, True)
+
+    def _create_medkit(self):
+        if random() < self.settings.medkit_frequency:
+            medkit = Medkit(self)
+            self.medkits.add(medkit)
+
+    def _check_medkit_left_edge(self):
+        for medkit in self.medkits.sprites():
+            if medkit.rect.left < 0:
+                break
+
+    def _update_medkits(self):
+        self.medkits.update()
+
+        if pygame.sprite.spritecollideany(self.player, self.medkits):
+            self._player_hit_medkit()
+
+        self._check_medkit_left_edge()
 
     def _create_rock(self):
         if random() < self.settings.rock_frequency:
@@ -117,39 +154,58 @@ class JetpackJoyride:
                 self._check_keydown_events(event)
             elif event.type == pygame.KEYUP:
                 self._check_keyup_events(event)
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                self._check_mousedown_events(event)
 
     def _check_keydown_events(self, event):
         if event.key == pygame.K_q:
             sys.exit()
-        elif event.key == pygame.K_LEFT:
+        elif event.key == pygame.K_a:
             self.player.moving_left = True
-        elif event.key == pygame.K_RIGHT:
+        elif event.key == pygame.K_d:
             self.player.moving_right = True
         elif event.key == pygame.K_SPACE:
-            self._fire_bullet()
             self.player.jumping = True
-            bullet_sound = mixer.Sound("laser.wav")
+
+        elif event.key == pygame.K_LEFT:
+            self.player2.moving_left = True
+        elif event.key == pygame.K_RIGHT:
+            self.player2.moving_right = True
+        elif event.key == pygame.K_UP:
+            self.player2.jumping = True
+
+    def _check_mousedown_events(self, event):
+        if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+            self._fire_bullet()
+            bullet_sound = mixer.Sound("music/laser.wav")
             bullet_sound.play()
 
     def _check_keyup_events(self, event):
-        if event.key == pygame.K_RIGHT:
+        if event.key == pygame.K_d:
             self.player.moving_right = False
-        elif event.key == pygame.K_LEFT:
+        elif event.key == pygame.K_a:
             self.player.moving_left = False
+        elif event.key == pygame.K_RIGHT:
+            self.player2.moving_right = False
+        elif event.key == pygame.K_LEFT:
+            self.player2.moving_left = False
 
     def _update_screen(self):
         self.screen.fill(self.settings.bg_color)
 
         self.background.blitme()
-        #self.platform.blitme()
+        # self.platform.blitme()
         self.player.blitme()
+        self.player2.blitme()
         self._create_rock()
-        #self._player_score()
+        self._create_medkit()
+        # self._player_score()
 
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
 
         self.rocks.draw(self.screen)
+        self.medkits.draw(self.screen)
 
         pygame.display.flip()
 

@@ -1,16 +1,16 @@
 import pygame
 
 
-class Player:
+class Player2:
     def __init__(self, jj_game):
         self.screen = jj_game.screen
         self.settings = jj_game.settings
         self.screen_rect = jj_game.screen.get_rect()
 
-        self.image = pygame.image.load('images/tile_0085.png')
+        self.image = pygame.image.load('images/tile_0099.png')
         self.rect = self.image.get_rect()
 
-        self.rect.midbottom = self.screen_rect.midbottom
+        self.rect.bottomleft = self.screen_rect.bottomleft
 
         self.x = float(self.rect.x)
         self.y = float(self.rect.y)

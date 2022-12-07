@@ -9,12 +9,12 @@ class Rock(Sprite):
         self.screen = jj_game.screen
         self.settings = jj_game.settings
 
-        self.image = pygame.image.load("images/genericItem_color_035.png")
+        self.image = pygame.image.load("images/spaceShips_006.png")
         self.rect = self.image.get_rect()
 
         self.rect.left = self.screen.get_rect().right
-        rock_top_max = 550
-        self.rect.top = randint(530, rock_top_max)
+        rock_top_max = 545
+        self.rect.top = randint(540, rock_top_max)
 
         self.x = float(self.rect.x)
 
