@@ -2,18 +2,21 @@ import pygame
 
 
 class Player:
+    """Class to manage player 1"""
     def __init__(self, jj_game):
         self.screen = jj_game.screen
         self.settings = jj_game.settings
         self.screen_rect = jj_game.screen.get_rect()
 
-        self.image = pygame.image.load('images/tile_0085.png')
+        # load image of player and its rect
+        self.image = pygame.image.load('images/tile_0084.png')
+        self.image = pygame.transform.scale(self.image, (40, 50))
         self.rect = self.image.get_rect()
 
-        self.rect.midbottom = self.screen_rect.midbottom
+        self.rect.center = self.screen_rect.center # starting position of player
 
+        # Stores a decimal value for the player's horizontal position
         self.x = float(self.rect.x)
-        self.y = float(self.rect.y)
 
         self.moving_right = False
         self.moving_left = False
@@ -24,15 +27,10 @@ class Player:
             self.x += self.settings.player_acc
         if self.moving_left and self.rect.left > 0:
             self.x -= self.settings.player_acc
-        if self.jumping:
-            self.y -= self.settings.y_vel
-            self.settings.y_vel -= self.settings.gravity
-            if self.settings.y_vel < -self.settings.player_jump:
-                self.jumping = False
-                self.settings.y_vel = self.settings.player_jump
 
+        # Updates rect object from self.x
         self.rect.x = self.x
-        self.rect.y = self.y
 
     def blitme(self):
+        """Draw player at its current location"""
         self.screen.blit(self.image, self.rect)

@@ -2,15 +2,213 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ebee833-4373-468d-b37d-adbbd6303243" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/player2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/character_femaleAdventurer_hold.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/tile_0084.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Alien-Invasion/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Alien-Invasion/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Alien-Invasion/sideways.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Alien-Invasion/sideways.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/Backgrounds/Elements/cloudLayer1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/Backgrounds/Elements/cloudLayer2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/Backgrounds/Elements/cloudLayerB1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/Backgrounds/Elements/cloudLayerB2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/Backgrounds/Elements/groundLayer1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/Backgrounds/Elements/groundLayer2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/Backgrounds/Elements/hills.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/Backgrounds/Elements/hillsLarge.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/Backgrounds/Elements/mountainA.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/Backgrounds/Elements/mountainB.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/Backgrounds/Elements/mountainC.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/Backgrounds/Elements/mountains.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/Backgrounds/backgroundColorDesert.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/Backgrounds/backgroundColorFall.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/Backgrounds/backgroundColorForest.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/Backgrounds/backgroundColorGrass.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/Backgrounds/backgroundDesert.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/Backgrounds/backgroundEmpty.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/Backgrounds/backgroundForest.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/Kenney.url" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/License.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/bush1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/bush2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/bush3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/bush4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/bushAlt1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/bushAlt2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/bushAlt3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/bushAlt4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/bushOrange1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/bushOrange2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/bushOrange3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/bushOrange4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/cactus1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/cactus2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/cactus3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/castleSmall.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/castleSmallAlt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/castleWall.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/castleWallAlt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/cloud1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/cloud2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/cloud3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/cloud4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/cloud5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/cloud6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/cloud7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/cloud8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/fence.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/fenceIron.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/house1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/house2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/houseAlt1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/houseAlt2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/houseSmall1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/houseSmall2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/houseSmallAlt1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/houseSmallAlt2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/moon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/moonFull.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/pyramid.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/pyramidMayan.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/sun.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/tower.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/towerAlt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/towerSmall.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/towerSmallAlt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/tree.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/treeDead.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/treeFrozen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/treeLong.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/treeLongFrozen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/treeLongOrange.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/treeLongSnow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/treeOrange.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/treePalm.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/treePine.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/treePineFrozen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/treePineOrange.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/treePineSnow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/treeSmall_green1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/treeSmall_green2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/treeSmall_green3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/treeSmall_greenAlt1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/treeSmall_greenAlt2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/treeSmall_greenAlt3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/treeSmall_orange1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/treeSmall_orange2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/treeSmall_orange3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Default/treeSnow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/bush1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/bush2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/bush3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/bush4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/bushAlt1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/bushAlt2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/bushAlt3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/bushAlt4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/bushOrange1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/bushOrange2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/bushOrange3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/bushOrange4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/cactus1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/cactus2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/cactus3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/castleSmall.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/castleSmallAlt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/castleWall.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/castleWallAlt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/cloud1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/cloud2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/cloud3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/cloud4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/cloud5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/cloud6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/cloud7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/cloud8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/fence.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/fenceIron.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/house1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/house2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/houseAlt1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/houseAlt2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/houseSmall1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/houseSmall2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/houseSmallAlt1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/houseSmallAlt2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/moon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/moonFull.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/pyramid.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/pyramidMayan.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/sun.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/tower.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/towerAlt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/towerSmall.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/towerSmallAlt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/tree.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/treeDead.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/treeFrozen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/treeLong.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/treeLongFrozen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/treeLongOrange.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/treeLongSnow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/treeOrange.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/treePalm.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/treePine.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/treePineFrozen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/treePineOrange.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/treePineSnow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/treeSmall_green1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/treeSmall_green2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/treeSmall_green3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/treeSmall_greenAlt1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/treeSmall_greenAlt2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/treeSmall_greenAlt3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/treeSmall_orange1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/treeSmall_orange2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/treeSmall_orange3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/PNG/Retina/treeSnow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/Patreon.url" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/Preview.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/Sample.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/Spritesheet/spritesheet_default.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/Spritesheet/spritesheet_default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/Spritesheet/spritesheet_retina.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/Spritesheet/spritesheet_retina.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/Vector/vector_backgrounds.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/Vector/vector_backgrounds.swf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/Vector/vector_objects.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background-elements-redux-fix/Vector/vector_objects.swf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/background.py" beforeDir="false" afterPath="$PROJECT_DIR$/background.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bullet.py" beforeDir="false" afterPath="$PROJECT_DIR$/bullet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fulljump.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamestats.py" beforeDir="false" afterPath="$PROJECT_DIR$/gamestats.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/backgroundgrass.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/bg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/character_malePerson_run0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/genericItem_color_035.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/retrobg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/spaceMeteors_002.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/spaceMeteors_003.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/spaceMeteors_004.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/tile_0000.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/tile_0001.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/tile_0002.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/tile_0003.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/tile_0006.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/tile_0016.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/tile_0085.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/tile_0087.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/tile_0099.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/medkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/medkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/menu.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/music/Assets_Audio_music.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/music/background.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/music/background2.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platform.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/player.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/player2.py" beforeDir="false" afterPath="$PROJECT_DIR$/player2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rock.py" beforeDir="false" afterPath="$PROJECT_DIR$/rock.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/settings.py" afterDir="false" />
     </list>
@@ -40,13 +238,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/jonny/Downloads/USNA/EW200/Alien-Invasion&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/jonny/Downloads/USNA/EW200/Alien-Invasion"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -68,5 +267,8 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
