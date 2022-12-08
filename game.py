@@ -94,6 +94,7 @@ class JetpackJoyride:
         """Player is given an extra life when medkit is collected"""
         self.stats.players_left += 1
 
+
     def _update_bullets(self):
         self.bullets.update()
 
@@ -138,7 +139,7 @@ class JetpackJoyride:
         # updates the position of the medkit and gets rid of old medkits
         if pygame.sprite.spritecollideany(self.player2, self.medkits):
             self._player_hit_medkit()
-
+            self.medkits.empty()
         self._check_medkit_left_edge()
 
     def _create_rock(self):
