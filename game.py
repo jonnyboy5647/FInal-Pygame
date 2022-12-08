@@ -37,8 +37,6 @@ class JetpackJoyride:
         self.rocks = pygame.sprite.Group()
         self.medkits = pygame.sprite.Group()
 
-        self.FramePerSec = pygame.time.Clock()
-
     def run_game(self):
         """main loop for the game"""
         self._background_music()  # plays the background music

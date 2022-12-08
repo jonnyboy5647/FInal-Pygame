@@ -1,0 +1,107 @@
+Index: game.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import sys\r\nimport pygame\r\n\r\nfrom pygame import mixer\r\nfrom player import Player\r\nfrom background import Background\r\nfrom gamestats import GameStats\r\nfrom settings import Settings\r\nfrom platform import Platform\r\nfrom rock import Rock\r\nfrom bullet import Bullet\r\n\r\nfrom random import random\r\n\r\nclock = pygame.time.Clock()\r\nclock.tick(60)\r\n\r\n\r\nclass JetpackJoyride:\r\n    def __init__(self):\r\n        pygame.init()\r\n        self.settings = Settings()\r\n\r\n        tile_size = 1024\r\n        window_size = tile_size\r\n\r\n        self.screen = pygame.display.set_mode((window_size, window_size))\r\n        self.settings.screen_width = self.screen.get_rect().width\r\n        self.settings.screen_height = self.screen.get_rect().height\r\n\r\n        pygame.display.set_caption(\"Jetpack Joyride\")\r\n\r\n        self.stats = GameStats(self)\r\n        self.player = Player(self)\r\n        self.background = Background(self)\r\n        self.platform = Platform(self)\r\n\r\n        self.bullets = pygame.sprite.Group()\r\n        self.rocks = pygame.sprite.Group()\r\n\r\n        self.FramePerSec = pygame.time.Clock()\r\n\r\n    def run_game(self):\r\n        while self.stats.game_active:\r\n            self._check_events()\r\n            self.player.update()\r\n            self._update_bullets()\r\n            self._update_rocks()\r\n            self._create_rock()\r\n            self._update_screen()\r\n            self._background_music()\r\n\r\n        Font = pygame.font.SysFont('Arial', 60)\r\n        game_over_text = Font.render(f\"GAME OVER\", True, (200, 200, 200))\r\n        self.screen.fill((0, 0, 0))\r\n        self.screen.blit(game_over_text, (350, 500))\r\n        pygame.display.flip()\r\n\r\n        while True:\r\n            for event in pygame.event.get():\r\n                if event.type == pygame.QUIT:\r\n                    sys.exit()\r\n                elif event.type == pygame.KEYDOWN:\r\n                    self._check_keydown_events(event)\r\n\r\n    def _background_music(self):\r\n        pygame.mixer.music.load(\"music/background3.wav\")\r\n        pygame.mixer.music.play(-1)\r\n\r\n    #def _player_score(self):\r\n    #    Font = pygame.font.SysFont('Arial', 30)\r\n    #    score = 0\r\n\r\n    #    score_text = Font.render(f\"SCORE: {score // 60}\", True, (0, 0, 0))\r\n    #    self.screen.blit(score_text, (15, 160))\r\n\r\n    def _player_hit(self):\r\n        if self.stats.players_left > 0:\r\n            self.stats.players_left -= 1\r\n\r\n            self.rocks.empty()\r\n            self.bullets.empty()\r\n\r\n        else:\r\n            self.stats.game_active = False\r\n\r\n    def _fire_bullet(self):\r\n        if len(self.bullets) < self.settings.bullets_allowed:\r\n            new_bullet = Bullet(self)\r\n            self.bullets.add(new_bullet)\r\n\r\n    def _update_bullets(self):\r\n        self.bullets.update()\r\n\r\n        for bullet in self.bullets.copy():\r\n            if bullet.rect.top >= self.settings.screen_height:\r\n                self.bullets.remove(bullet)\r\n\r\n    def _create_rock(self):\r\n        if random() < self.settings.rock_frequency:\r\n            rock = Rock(self)\r\n            self.rocks.add(rock)\r\n            print(len(self.rocks))\r\n        Font = pygame.font.SysFont('Arial', 30)\r\n        score_text = Font.render(f\"SCORE: {len(self.rocks)}\", True, (0, 0, 0))\r\n        self.screen.blit(score_text, (15, 160))\r\n\r\n    def _check_rocks_left_edge(self):\r\n        for rock in self.rocks.sprites():\r\n            if rock.rect.left < 0:\r\n                break\r\n\r\n    def _update_rocks(self):\r\n        self.rocks.update()\r\n\r\n        if pygame.sprite.spritecollideany(self.player, self.rocks):\r\n            self._player_hit()\r\n\r\n        self._check_rocks_left_edge()\r\n\r\n    def _check_events(self):\r\n        for event in pygame.event.get():\r\n            if event.type == pygame.QUIT:\r\n                sys.exit()\r\n            elif event.type == pygame.KEYDOWN:\r\n                self._check_keydown_events(event)\r\n            elif event.type == pygame.KEYUP:\r\n                self._check_keyup_events(event)\r\n\r\n    def _check_keydown_events(self, event):\r\n        if event.key == pygame.K_q:\r\n            sys.exit()\r\n        elif event.key == pygame.K_LEFT:\r\n            self.player.moving_left = True\r\n        elif event.key == pygame.K_RIGHT:\r\n            self.player.moving_right = True\r\n        elif event.key == pygame.K_SPACE:\r\n            self._fire_bullet()\r\n\r\n    def _check_keyup_events(self, event):\r\n        if event.key == pygame.K_RIGHT:\r\n            self.player.moving_right = False\r\n        elif event.key == pygame.K_LEFT:\r\n            self.player.moving_left = False\r\n\r\n    def _update_screen(self):\r\n        self.screen.fill(self.settings.bg_color)\r\n\r\n        self.background.blitme()\r\n        self.platform.blitme()\r\n        self.player.blitme()\r\n        self._create_rock()\r\n        #self._player_score()\r\n\r\n        for bullet in self.bullets.sprites():\r\n            bullet.draw_bullet()\r\n\r\n        self.rocks.draw(self.screen)\r\n\r\n        pygame.display.flip()\r\n\r\n\r\nif __name__ == '__main__':\r\n    jj = JetpackJoyride()\r\n    jj.run_game()\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/game.py b/game.py
+--- a/game.py	(revision 75f984e4e7bcfb4791f6221619cf996a4be9b9d9)
++++ b/game.py	(date 1669842275961)
+@@ -64,7 +64,7 @@
+                     self._check_keydown_events(event)
+ 
+     def _background_music(self):
+-        pygame.mixer.music.load("music/background3.wav")
++        pygame.mixer.music.load("music/music.wav")
+         pygame.mixer.music.play(-1)
+ 
+     #def _player_score(self):
+@@ -147,7 +147,7 @@
+         self.screen.fill(self.settings.bg_color)
+ 
+         self.background.blitme()
+-        self.platform.blitme()
++        self.platform.blitme(self.screen)
+         self.player.blitme()
+         self._create_rock()
+         #self._player_score()
+Index: platform.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import pygame\r\n\r\n\r\nclass Platform:\r\n    def __init__(self, jj_game):\r\n        super().__init__()\r\n        self.screen = jj_game.screen\r\n\r\n        self.image = pygame.image.load(\"images/tile_0000.png\")\r\n        self.image.blit(pygame.image.load(\"images/tile_0000.png\"),\r\n                        (0, 1006))\r\n        self.image.blit(pygame.image.load(\"images/tile_0000.png\"),\r\n                        (18, 1006))\r\n        self.image.blit(pygame.image.load(\"images/tile_0000.png\"),\r\n                        (36, 1006))\r\n        self.image.blit(pygame.image.load(\"images/tile_0000.png\"),\r\n                        (54, 1006))\r\n        self.image.blit(pygame.image.load(\"images/tile_0000.png\"),\r\n                        (72, 1006))\r\n        self.image.blit(pygame.image.load(\"images/tile_0000.png\"),\r\n                        (90, 1006))\r\n        self.image.blit(pygame.image.load(\"images/tile_0000.png\"),\r\n                        (108, 1006))\r\n        self.image.blit(pygame.image.load(\"images/tile_0000.png\"),\r\n                        (126, 1006))\r\n        self.image.blit(pygame.image.load(\"images/tile_0000.png\"),\r\n                        (144, 1006))\r\n        self.image.blit(pygame.image.load(\"images/tile_0000.png\"),\r\n                        (162, 1006))\r\n        self.image.blit(pygame.image.load(\"images/tile_0000.png\"),\r\n                        (180, 1006))\r\n        self.image.blit(pygame.image.load(\"images/tile_0000.png\"),\r\n                        (198, 1006))\r\n        self.image.blit(pygame.image.load(\"images/tile_0000.png\"),\r\n                        (216, 1006))\r\n        self.image.blit(pygame.image.load(\"images/tile_0000.png\"),\r\n                        (234, 1006))\r\n        self.image.blit(pygame.image.load(\"images/tile_0000.png\"),\r\n                        (252, 1006))\r\n        self.image.blit(pygame.image.load(\"images/tile_0000.png\"),\r\n                        (270, 1006))\r\n        self.rect = self.image.get_rect()\r\n\r\n    def blitme(self):\r\n        self.screen.blit(self.image, self.rect)\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/platform.py b/platform.py
+--- a/platform.py	(revision 75f984e4e7bcfb4791f6221619cf996a4be9b9d9)
++++ b/platform.py	(date 1669841662154)
+@@ -6,7 +6,7 @@
+         super().__init__()
+         self.screen = jj_game.screen
+ 
+-        self.image = pygame.image.load("images/tile_0000.png")
++        self.image = pygame.image.load("images/backgroundCastles.png")
+         self.image.blit(pygame.image.load("images/tile_0000.png"),
+                         (0, 1006))
+         self.image.blit(pygame.image.load("images/tile_0000.png"),
+@@ -41,5 +41,5 @@
+                         (270, 1006))
+         self.rect = self.image.get_rect()
+ 
+-    def blitme(self):
+-        self.screen.blit(self.image, self.rect)
++    def blitme(self, surface):
++        surface.blit(self.image, self.rect)
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"9ebee833-4373-468d-b37d-adbbd6303243\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/FInal-Pygame.iml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/FInal-Pygame.iml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/modules.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/modules.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/vcs.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/vcs.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/jetpackjoyride.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/jetpackjoyride.py\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2IF1P78pbEjh8oQFFzAwS5obfOR\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"last_opened_file_path\": \"C:/Users/jonny/Downloads/USNA/EW200/mighty_midy\"\r\n  }\r\n}]]></component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"9ebee833-4373-468d-b37d-adbbd6303243\" name=\"Changes\" comment=\"\" />\r\n      <created>1669762489711</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1669762489711</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 75f984e4e7bcfb4791f6221619cf996a4be9b9d9)
++++ b/.idea/workspace.xml	(date 1669842628046)
+@@ -2,11 +2,10 @@
+ <project version="4">
+   <component name="ChangeListManager">
+     <list default="true" id="9ebee833-4373-468d-b37d-adbbd6303243" name="Changes" comment="">
+-      <change beforePath="$PROJECT_DIR$/.idea/FInal-Pygame.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/FInal-Pygame.iml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/music/music.wav" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/jetpackjoyride.py" beforeDir="false" afterPath="$PROJECT_DIR$/jetpackjoyride.py" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/platform.py" beforeDir="false" afterPath="$PROJECT_DIR$/platform.py" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -20,13 +19,16 @@
+     <option name="stateVersion" value="1" />
+   </component>
+   <component name="ProjectId" id="2IF1P78pbEjh8oQFFzAwS5obfOR" />
+-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
++  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
++    <ConfirmationsSetting value="2" id="Add" />
++  </component>
+   <component name="ProjectViewState">
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+   <component name="PropertiesComponent"><![CDATA[{
+   "keyToString": {
++    "ASKED_ADD_EXTERNAL_FILES": "true",
+     "RunOnceActivity.OpenProjectViewOnStart": "true",
+     "RunOnceActivity.ShowReadmeOnStart": "true",
+     "last_opened_file_path": "C:/Users/jonny/Downloads/USNA/EW200/mighty_midy"
+@@ -54,4 +56,7 @@
+       </map>
+     </option>
+   </component>
++  <component name="VcsManagerConfiguration">
++    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
++  </component>
+ </project>
+\ No newline at end of file

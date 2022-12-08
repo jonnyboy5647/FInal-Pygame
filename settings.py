@@ -12,7 +12,7 @@ class Settings:
         self.player_acc = 1.5
         self.player_limit = 0
         self.gravity = 0.125
-        self.player_jump = 12
+        self.player_jump = 11
         self.y_vel = self.player_jump
 
         # bullet settings
@@ -24,7 +24,7 @@ class Settings:
 
         # obstacle settings
         self.rock_speed = 1.5
-        self.rock_frequency = 0.0005
+        self.rock_frequency = 0.0002
 
         # medkit settings
         self.medkit_speed = 1
